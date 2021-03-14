@@ -1,7 +1,15 @@
-import "./App.css";
-
+import { Route, Switch, withRouter } from "react-router-dom";
+import StartingPage from "./containers/startingPage/startingPage";
+import Dashboard from "./containers/dashboard/dashboard";
 function App() {
-  return <div className="App">12</div>;
+  return (
+    <>
+      <Switch>
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/" component={StartingPage} />
+      </Switch>
+    </>
+  );
 }
 
-export default App;
+export default withRouter(App);
