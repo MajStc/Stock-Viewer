@@ -65,6 +65,7 @@ const SymbolSearch = (props: any) => {
         onMouseDown={() => changeDisplay(true)}
         className={classes.inputField}
         id={props.placeholder}
+        autoComplete="off"
       />
       <div className={classForDiv}>
         <ul className={classes.symbolsList}>

@@ -1,6 +1,6 @@
 
 .header{
-    position: fixed;
+    position: absolute;
     margin: 0;
     height: 10%;
     width: 100%;
@@ -9,4 +9,5 @@
     flex-direction: row;
     padding: 1em;
     box-shadow: 0 2px 5px black;
+    z-index: 100;
 }
