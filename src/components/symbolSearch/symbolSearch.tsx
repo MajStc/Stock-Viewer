@@ -51,8 +51,9 @@ const SymbolSearch = (props: any) => {
 
   const pickSymbol = (event: any) => {
     setSearchSymbol(event.target.id);
-    const type = props.placeholder.toUpperCase();
-    dispatch({ type, value: event.target.id });
+    const actionType = props.placeholder.toUpperCase();
+    dispatch({ type: actionType, value: event.target.id });
+    dispatch({ type: `UPDATE_${actionType}`, value: event.target.id });
   };
 
   return (
