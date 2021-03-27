@@ -1,3 +1,5 @@
+import { FROM, TO } from "../functions";
+
 interface Pairs {
   from: string;
   to: string;
@@ -10,10 +12,10 @@ const initialState = {
 
 const currencyPair = (state: Pairs = initialState, action: any) => {
   switch (action.type) {
-    case "FROM": {
+    case FROM: {
       return { ...state, from: action.value };
     }
-    case "TO": {
+    case TO: {
       return { ...state, to: action.value };
     }
     default:

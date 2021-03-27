@@ -1,6 +1,8 @@
 import TimeButton from "../../components/timeButton/timeButton";
+import { useState } from "react";
 
 const TimeButtons = () => {
+  const [disabled, setDisabled] = useState(false);
   return (
     <div>
       <TimeButton time="1min" />
@@ -9,7 +11,11 @@ const TimeButtons = () => {
       <TimeButton time="30min" />
       <TimeButton time="60min" />
       <TimeButton time="1d" />
-      <TimeButton time="1w" />
+      <TimeButton
+        time="1w"
+        isDisabled={disabled}
+        onClick={() => setDisabled(!disabled)}
+      />
     </div>
   );
 };

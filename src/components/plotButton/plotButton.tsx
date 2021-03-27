@@ -1,11 +1,15 @@
-import classes from "./plotButton.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { RootState } from "../../store/reducers/rootReducer";
 
+import classes from "./plotButton.module.scss";
+
 const PlotButton = () => {
+  const dispatch = useDispatch();
+  const [isActive, setActive] = useState(false);
+
   const { from, to, time } = useSelector((state: RootState) => state.urlData);
   const urlData = useSelector((state: RootState) => state.urlData);
-  const dispatch = useDispatch();
 
   const urlTime = urlData.time.includes("min")
     ? urlData.time
@@ -18,13 +22,12 @@ const PlotButton = () => {
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const xValues: string[] = [];
         const closeValues: string[] = [];
         const highValues: string[] = [];
         const lowValues: string[] = [];
         const openValues: string[] = [];
-        console.log(`Time Series FX (${urlData.time})`);
+
         for (let key in data[`Time Series FX (${urlTime})`]) {
           xValues.push(key);
           closeValues.push(
@@ -45,25 +48,23 @@ const PlotButton = () => {
       });
   };
 
-  let isActive: boolean;
-  let button;
-  isActive = to !== "" && from !== "" && time !== "";
+  useEffect(() => {
+    if (to !== "" && from !== "" && time !== "") {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  }, [from, to, time]);
 
-  if (isActive) {
-    button = (
-      <button className={classes.plotButton} onClick={fetchData}>
-        PLOT
-      </button>
-    );
-  } else {
-    button = (
-      <button className={classes.plotButton} disabled>
-        PLOT
-      </button>
-    );
-  }
-
-  return button;
+  return (
+    <button
+      className={classes.plotButton}
+      onClick={fetchData}
+      disabled={!isActive}
+    >
+      PLOT
+    </button>
+  );
 };
 
 export default PlotButton;

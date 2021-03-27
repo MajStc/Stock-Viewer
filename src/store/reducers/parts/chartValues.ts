@@ -1,29 +1,31 @@
+import { UPDATE_DATA } from "../functions";
+
 interface ChartValues {
-  xValues: string[];
   closeValues: string[];
   openValues: string[];
   highValues: string[];
   lowValues: string[];
+  xValues: string[];
 }
 
 const initialState = {
-  xValues: [],
   closeValues: [],
   openValues: [],
   highValues: [],
   lowValues: [],
+  xValues: [],
 };
 
 const chartValues = (state: ChartValues = initialState, action: any) => {
   switch (action.type) {
-    case "UPDATE_DATA": {
+    case UPDATE_DATA: {
       return {
         ...state,
-        xValues: action.xValues,
         closeValues: action.closeValues,
         openValues: action.openValues,
         highValues: action.highValues,
         lowValues: action.lowValues,
+        xValues: action.xValues,
       };
     }
     default:

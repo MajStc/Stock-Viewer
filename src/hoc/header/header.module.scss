@@ -1,13 +1,15 @@
+@import "../../styles/variables.scss";
 
-.header{
-    position: absolute;
-    margin: 0;
-    height: 10%;
-    width: 100%;
-    background-color: rgb(25, 17, 65);
-    display: flex;
-    flex-direction: row;
-    padding: 1em;
-    box-shadow: 0 2px 5px black;
-    z-index: 100;
+.header {
+  position: absolute;
+  margin: 0;
+  height: 10%;
+  width: 100%;
+  background-color: $headerBackground;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1em;
+  box-shadow: 0 2px 5px black;
+  z-index: 100;
 }

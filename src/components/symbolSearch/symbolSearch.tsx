@@ -22,15 +22,15 @@ const SymbolSearch = (props: any) => {
   };
 
   useEffect(() => {
-    const results: string[] = symbols.filter((symbol) =>
-      symbol.toLowerCase().includes(searchSymbol.toLowerCase())
-    );
-    setSearchResults(results);
     if (searchSymbol === "") {
       setSearchResults([]);
       changeDisplay(false);
     } else {
       changeDisplay(true);
+      const results: string[] = symbols.filter((symbol) =>
+        symbol.toLowerCase().includes(searchSymbol.toLowerCase())
+      );
+      setSearchResults(results);
     }
   }, [searchSymbol, symbols]);
 
@@ -40,6 +40,7 @@ const SymbolSearch = (props: any) => {
   } else {
     classForDiv = classes.listContainer;
   }
+
   if (display) {
     document.addEventListener("click", (e: any) => {
       e.stopPropagation();
